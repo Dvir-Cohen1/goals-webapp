@@ -1,0 +1,101 @@
+<html lang="en">
+
+<head>
+     <%- include('../partials/head'); %>
+          <script type="module" src="/js/script.js"></script>
+</head>
+
+<body>
+     <header>
+          <%- include('../partials/header'); %>
+     </header>
+     <main class="main-container goal-main container">
+
+          <div class="goal-header mt-4 mb-2">
+               <div>
+                    <div class="d-flex align-items-center cards-list">
+                         <h2 class="me-3">
+                              <%= title %>
+                         </h2>
+                         <a href="/goals/editGoal/<%= id %>">
+                              <button class="btn btn-primary me-2">
+
+                                   <i style="color:#526AFF;" class="fas fa-pen"></i>
+                              </button>
+                         </a>
+
+                         <form action="/goals/goal/<%= id %>?_method=DELETE" method="POST">
+                              <input type="hidden" name="_method" value="DELETE">
+                              <!-- Delete Goal -->
+                              <button type="submit" class="btn btn-danger">
+                                   <i class="fas fa-trash-alt" style="color: #DC3545;"></i>
+                              </button>
+                         </form>
+
+                         <div class="ms-auto d-flex align-items-center">
+                              <a href="/goals/newGoal"><button class="btn btn-primary me-2"><i
+                                             class="fas fa-plus fs-5"></i></button></a>
+                              <a href="/goals" class="card-link float-end"><button class="btn btn-primary"><i
+                                             class="fas fa-list fs-6"></i></button>
+                              </a>
+
+                         </div>
+                    </div>
+                    <p class="card-title">
+                         <%= subTitle %>
+                              <br>
+                              Priority: <b>
+                                   <%= priority %>
+                              </b>
+                              <br>
+                              id: <b>
+                                   <%= id %>
+                              </b>
+                              <br>
+                              Created: <b>
+                                   <%= timeCreated %>
+                              </b>
+                    </p>
+               </div>
+
+          </div>
+          <div class="card single my-2">
+               <div class="card-body">
+                    <p class="card-text m-0">
+                         <%= content %>
+                    </p>
+               </div>
+          </div>
+
+
+
+          <p class="card-text my-3">
+               Attachments
+          </p>
+          <div class="card single my-2">
+               <div class="card-body">
+                    <% if (img !==null) { %>
+                         <div class="attachments">
+                              <img style="max-width: 150px;" src="/uploads/<%= img %>
+                                                                           " alt="">
+                              <span class="delete-goal-img"><i class="fas fa-ban"></i> </span>
+                         </div>
+                         <% } else {%>
+                              No attachments found.
+                              <% }%>
+               </div>
+          </div>
+
+
+          <div class="float-end">
+               <button class="btn btn-primary mt-3" id="test"><i class="fas fa-cloud-download-alt"></i></button>
+               <button onclick="window.print()" class="btn btn-primary mt-3 ms-2" id="test"><i class="fas fa-print"></i></button>
+               <button class="btn btn-primary mt-3 ms-2" id="test"><i class="fas fa-share-alt"></i></button>
+          </div>
+     </main>
+     <footer>
+          <%- include('../partials/footer'); %>
+     </footer>
+</body>
+
+</html>

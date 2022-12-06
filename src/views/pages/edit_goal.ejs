@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <%- include('../partials/head'); %>
+</head>
+
+<body>
+     <header>
+          <%- include('../partials/header'); %>
+     </header>
+     <main class="main-container">
+          <div class="display-6 mb-4">
+               <span style="border-bottom:3px solid yellow;">Edit Goal </span>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+               <div class="card-body">
+                    <form id="edit-goal" action="/goals/goal/<%= id %>?_method=PUT" method="POST">
+                         <input type="hidden" name="_method" value="PUT">
+                         <div class="form-group">
+                              <label class="mb-2" for="goal-title">Title</label>
+                              <input type="text" required name="title" minlength="3" maxlength="20" class="form-control"
+                                   id="goal-title" placeholder="#Goal" value="<%= title %>">
+                         </div>
+                         <div class="form-group">
+                              <label class="mb-2" for="goal-subTitle">Description</label>
+                              <input type="text" required name="subTitle" minlength="3" maxlength="30"
+                                   class="form-control" id="goal-subTitle" placeholder="#Goal subtitle"
+                                   value="<%= subTitle %>">
+                         </div>
+
+
+                         <div class="form-group">
+                              <label class="mb-2" for="goal-content">Content</label>
+                              <textarea class="form-control" required name="content" minlength="5" maxlength="500"
+                                   id="goal-content"><%= content %></textarea>
+                         </div>
+
+                         <label>Priority</label>
+                         <br>
+                         <div class="form-check form-check-inline my-2">
+                              <input class="form-check-input" type="radio" name="priority" value="high"
+                                   id="priority-high">
+                              <label class="form-check-label" for="priority-high">
+                                   high
+                              </label>
+                         </div>
+                         <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="priority" value="low" id="priority-low"
+                                   checked>
+                              <label class="form-check-label" for="priority-low">
+                                   low
+                              </label>
+                         </div>
+                         <!-- File -->
+                         <div class="mb-3">
+                              <label for="formFileSm" class="form-label">File</label>
+                              <input class="form-control form-control-sm" type="file" name="file">
+                         </div>
+                         <!-- buttons -->
+                         <div class="mt-4 mb-2">
+                              <button type="submit" class="btn btn-primary">Save</button>
+                              <a href="../" class="btn btn-danger float-end">Cancel</a>
+                         </div>
+                    </form>
+               </div>
+          </div>
+     </main>
+
+     <footer>
+          <%- include('../partials/footer'); %>
+     </footer>
+</body>
+
+</html>

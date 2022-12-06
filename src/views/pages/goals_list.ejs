@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <%- include('../partials/head'); %>
+</head>
+
+<body>
+     <header>
+          <%- include('../partials/header'); %>
+     </header>
+     <main class="main-container">
+
+          <script>
+
+          </script>
+          <section class="goals-header my-4">
+               <h2 class="mb-4">
+                    My Goals
+                    <a href="/goals/newGoal"><button class="btn btn-primary mx-2">New</button></a>
+
+
+
+                    <form class="d-inline" action="/goals" method="POST">
+                         <input type="hidden" name="_method" value="DELETE">
+                         <a href="/goals"><button class="btn
+                              btn-danger">Clear All</button>
+                         </a>
+                    </form>
+
+
+
+               </h2>
+               <div class="mb-4">
+                    <form class="d-flex" role="search">
+                         <input class="form-control me-2" type="search" placeholder="Search Goals.."
+                              aria-label="Search">
+                    </form>
+               </div>
+          </section>
+
+          <section class="goals-cards">
+               <% if (goals===null || goals.length===0) {%>
+                    No Goals Found.
+                    <% } else {%>
+                         <% goals.forEach( (goal)=> { %>
+                              <% let priorityColor; if (goal.priority=='high' ) { priorityColor='#ff9800' ; } else if
+                                   (goal.priority=='low' ) { priorityColor='#526AFF' ; } else { priorityColor='#333' ; }
+                                   %>
+
+                                   <div class="card list">
+                                        <div class="card-body cards-list"
+                                             onclick="location.href='/goals/goal/<%= goal.id %>'">
+                                             <form action="/goals/goal/<%= goal.id %>?_method=DELETE" method="POST">
+                                                  <input type="hidden" name="_method" value="DELETE">
+                                                  <!-- Delete Goal -->
+                                                  <button type="submit" class="btn btn-danger delete-goal float-end">
+                                                       <i class="fas fa-trash-alt"></i>
+                                                  </button>
+                                             </form>
+
+                                             <!--  Edit Goal -->
+                                             <a href="/goals/editGoal/<%= goal.id %>"><button
+                                                       class="btn btn-primary delete-goal me-2 float-end">
+                                                       <i style="color:#526AFF;" class="fas fa-pen"></i>
+                                                  </button>
+                                             </a>
+                                             <h5 class="card-title">
+                                                  <%= goal.title %>
+                                                       <span class="priority-indication"><i
+                                                                 style="font-size: 0.4rem;color:<%= priorityColor %>;"
+                                                                 class="fas fa-circle"></i></span>
+                                             </h5>
+                                             <h6 class="card-subtitle mb-2 text-muted">
+                                                  <%= goal.subTitle %>
+                                             </h6>
+                                             <span class="card-text">
+                                                  <%= goal.content %>
+                                             </span>
+                                             <br>
+                                             <span class="small mt-0">
+                                                  <%= goal.timeCreated %>
+                                             </span>
+
+                                             <% if (goal.img !==null) { %>
+                                                  clg
+                                                  <div class="card-img-top mt-3">
+                                                       <img style="max-width: 300px;" src="/uploads/<%= goal.img %>"
+                                                            alt="">
+                                                  </div>
+                                                  <% } %>
+
+                                        </div>
+                                   </div>
+                                   <% })}; %>
+          </section>
+          <a class="text-white scroll-up-btn" href="#"><i class="fas fa-chevron-up"></i></a>
+     </main>
+     <footer class="goals-footer">
+          <%- include('../partials/footer'); %>
+     </footer>
+</body>
+
+</html>

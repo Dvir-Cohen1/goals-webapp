@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,500&display=swap');
+
+:root {
+     /* Colors */
+     --white: #fff;
+     --black: #000;
+
+     --background-color: #051428;
+     --card-background: #0b213d;
+
+     --primary: #526aff;
+     --primary-hover: hsl(232deg 100% 50% / 19%);
+     --primary-border: #0022ff;
+
+     --danger: hsl(0deg 99% 40% / 19%);
+     --danger-border: #DC3545;
+     --danger-border-hover: #cd0101;
+
+     --text-yellow: #ff9800;
+     --text-purple: #5c6bc0;
+
+     --main-circle-color: #011632;
+     --sub-circle-color: #3949ab;
+
+     --color-purple: #5B53CB;
+     --color-purple-light: #A4B3F7;
+     --color-purple-lighter: #989BC8;
+     --color-purple-brown: #848494;
+     --color-purple-pink-light: #E5DEED;
+     --color-purple-dark: #313145;
+
+     /* Fonts */
+     --font-size-xxs: 0.5rem;
+     --font-size-xs: 0.7rem;
+     --font-size-small: 0.8rem;
+     --font-size-medium: 1.3rem;
+     --logo-font-large: 1.6rem;
+
+     --default-padding: 25px;
+
+     /* Borders */
+     --default-border-radius: 8px;
+     --default-border-color: #526aff;
+
+     /* box-shadow */
+     --default-box-shadow: 0 0 0 1px var(--default-border-color);
+}
